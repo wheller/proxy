@@ -15,5 +15,4 @@ RUN yum -y update
 RUN yum -y install openssh openssh-clients
 
 
-ENTRYPOINT ["/usr/bin/ssh", "-L", "$LOCAL_PORT:$DB_SERVER:$REMOTE_PORT", "$SSH_USER@$JUMP_HOST", "-N"]
-CMD [""]
+ENTRYPOINT /usr/bin/ssh -v -L $LOCAL_PORT:$DB_SERVER:$REMOTE_PORT $SSH_USER@$JUMP_HOST -N
